@@ -1,114 +1,140 @@
-package com.example.guessmebypavi.guessmebypavi;
+import javax.swing.*;
+
+public class Main {
+    public static void main(String[] args) throws java.io.IOException {
+        String temp;
+        temp = JOptionPane.showInputDialog(null, "Enter the team either1 or 2");
+        int team = Integer.parseInt(temp);
+        if (team == 1) {
+
+            JPasswordField movie_name= new JPasswordField();
+            JOptionPane.showConfirmDialog(null,movie_name,"Enter the movie name",JOptionPane.OK_CANCEL_OPTION);
+            String movie= new String(movie_name.getPassword());
+
+            JPasswordField hint1=new JPasswordField();
+            JOptionPane.showConfirmDialog(null,hint1,"Enter the hint 1", JOptionPane.OK_CANCEL_OPTION);
+            String hint1ans= new String(hint1.getPassword());
 
 
+            JPasswordField hint2=new JPasswordField();
+            JOptionPane.showConfirmDialog(null,hint2, "Enter hint 2",JOptionPane.OK_CANCEL_OPTION);
+            String hint2ans=new String(hint2.getPassword());
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.*;
+            JPasswordField hint3= new JPasswordField();
+            JOptionPane.showConfirmDialog(null,hint3, "Enter hint 3",JOptionPane.OK_CANCEL_OPTION);
+            String hint3ans=new String(hint3.getPassword());
 
-import java.util.HashMap;
-import java.util.Map;
-@RestController
-@SpringBootApplication
-public class GuessmebypaviApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(GuessmebypaviApplication.class, args);
-    }
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Here are your hints:\n" + new String(hint1.getPassword()) + "\n" + new String(hint2.getPassword()) + "\n" + new String(hint3.getPassword())
+            );
 
-    private String movieTeam1;
-    private String[] hintsTeam1;
-    private String movieTeam2;
-    private String[] hintsTeam2;
-
-    private boolean team1Started = false;
-
-    @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping("/startGame")
-    public Map<String, Object> startGame(@RequestBody Map<String, Object> requestData) {
-        int teamNumber = (int) requestData.get("team");
-
-        Map<String, Object> response = new HashMap<>();
-
-        if (teamNumber == 1) {
-            if (team1Started) {
-                response.put("message", "Team 1 has already started the game. Wait for Team 2.");
+            JOptionPane.showMessageDialog(null, "HI Team 2 you need to guess the movie, you have 3 attempts to guess the movie");
+            String attempt1;
+            attempt1 = JOptionPane.showInputDialog(null, "Enter the guess 1");
+            String attempt1ans = attempt1;
+            if (attempt1ans.equals(movie)) {
+                JOptionPane.showMessageDialog(null, "hurray you guessed it right");
+                System.exit(0);
             } else {
-                team1Started = true;
-                // Simulate user input for team 1 (replace with your actual frontend logic)
-                movieTeam1 = (String) requestData.get("movie");
-                hintsTeam1 = ((String) requestData.get("hints")).split(",");
-
-                response.put("message", "Game started for team 1");
-                response.put("movie", movieTeam1);
-                response.put("hints", hintsTeam1);
+                JOptionPane.showMessageDialog(null, "Oh not a match  You still have 2 attempts");
             }
-        } else if (teamNumber == 2) {
-            if (!team1Started) {
-                response.put("message", "Team 1 needs to start the game first.");
+            System.out.println(attempt1ans);
+            // attempt 2
+            //JOptionPane.showMessageDialog(null, "HI TEAm 2 you need to guess the movie, you have 2 attempts to guess the movie");
+            String attempt2;
+            attempt2 = JOptionPane.showInputDialog(null, "Enter the guess 2");
+            String attempt2ans = attempt2;
+            if (attempt2ans.equals(movie)) {
+                JOptionPane.showMessageDialog(null, "hurray you guessed it right");
+                System.exit(0);
             } else {
-                // Simulate user input for team 2 (replace with your actual frontend logic)
-                movieTeam2 = (String) requestData.get("movie");
-                hintsTeam2 = ((String) requestData.get("hints")).split(",");
-
-                response.put("message", "Game started for team 2");
-                response.put("movie", movieTeam2);
-                response.put("hints", hintsTeam2);
+                JOptionPane.showMessageDialog(null, "Oh not a match You still have 1 attempts");
             }
-        } else {
-            response.put("message", "Invalid team number");
+
+            // attempt 3
+            //JOptionPane.showMessageDialog(null,"HI TEAm 1 you need to guess the movie, you have 1 last attempts to guess the movie");
+            String attempt3;
+            attempt3=JOptionPane.showInputDialog(null,"Enter the guess 3");
+            String attempt3ans=attempt3;
+            if(attempt3ans.equals(movie))
+            {
+                JOptionPane.showMessageDialog(null,"hurray you guessed it right");
+                System.exit(0);
+            }
+
+            else {
+                JOptionPane.showMessageDialog(null,"Oh not a match You still have 0 attempts left");
+                JOptionPane.showMessageDialog(null,"the movie was "+movie);
+            }
+
+
         }
 
-        return response;
-    }
+     else if(team==2) {
 
-    @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping("/makeGuess")
-    public Map<String, Object> startGame(@RequestBody Map<String, Object> requestData) {
-        int teamNumber = (int) requestData.get("team");
+            JPasswordField movie_name= new JPasswordField();
+            JOptionPane.showConfirmDialog(null,movie_name,"Enter the movie name",JOptionPane.OK_CANCEL_OPTION);
+            String movie= new String(movie_name.getPassword());
 
-        Map<String, Object> response = new HashMap<>();
+            JPasswordField hint1=new JPasswordField();
+            JOptionPane.showConfirmDialog(null,hint1,"Enter the hint 1", JOptionPane.OK_CANCEL_OPTION);
+            String hint1ans= new String(hint1.getPassword());
 
-        if (teamNumber == 1) {
-            if (team1Started) {
-                response.put("message", "Team 1 has already started the game. Wait for Team 2.");
+
+            JPasswordField hint2=new JPasswordField();
+            JOptionPane.showConfirmDialog(null,hint2, "Enter hint 2",JOptionPane.OK_CANCEL_OPTION);
+            String hint2ans=new String(hint2.getPassword());
+
+            JPasswordField hint3= new JPasswordField();
+            JOptionPane.showConfirmDialog(null,hint3, "Enter hint 3",JOptionPane.OK_CANCEL_OPTION);
+            String hint3ans=new String(hint3.getPassword());
+
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Here are your hints:\n" + new String(hint1.getPassword()) + "\n" + new String(hint2.getPassword()) + "\n" + new String(hint3.getPassword())
+            );
+
+            JOptionPane.showMessageDialog(null, "HI Team 1 you need to guess the movie, you have 3 attempts to guess the movie");
+            String attempt1;
+            attempt1 = JOptionPane.showInputDialog(null, "Enter the guess 1");
+            String attempt1ans = attempt1;
+            if (attempt1ans.equals(movie)) {
+                JOptionPane.showMessageDialog(null, "hurray you guessed it right");
+                System.exit(0);
             } else {
-                team1Started = true;
-                // Capture user input for team 1
-                movieTeam1 = (String) requestData.get("movie");
-                hintsTeam1 = ((String) requestData.get("hints")).split(",");
-
-                response.put("message", "Game started for team 1");
-                response.put("movie", movieTeam1);
-                response.put("hints", hintsTeam1);
-                } else {
-                    response.put("result", "Incorrect guess for team 1. Try again!");
-                }
-            } else {
-                response.put("result", "Guess not provided for team 1.");
+                JOptionPane.showMessageDialog(null, "Oh not a match  You still have 2 attempts");
             }
-        } else if (teamNumber == 2) {
-            // Implement logic for handling guesses for team 2
-            // Compare guess with the correct answer (movieTeam1)
-            int attempts = 3; // Number of attempts allowed for Team 2
-            if (guessData.containsKey("guess")) {
-                String guess = guessData.get("guess");
-                for (int i = 0; i < attempts; i++) {
-                    if (guess.equals(movieTeam1)) {
-                        response.put("result", "Team 2 wins! Correct guess for team 1.");
-                        return response;
-                    } else {
-                        response.put("result", "Incorrect guess for team 1. Try again!");
-                        response.put("attemptsLeft", String.valueOf(attempts - i - 1));
-                    }
-                }
-                response.put("result", "Team 2 loses! No more attempts left.");
+            System.out.println(attempt1ans);
+            // attempt 2
+            //JOptionPane.showMessageDialog(null, "HI TEAm 2 you need to guess the movie, you have 2 attempts to guess the movie");
+            String attempt2;
+            attempt2 = JOptionPane.showInputDialog(null, "Enter the guess 2");
+            String attempt2ans = attempt2;
+            if (attempt2ans.equals(movie)) {
+                JOptionPane.showMessageDialog(null, "hurray you guessed it right");
+                System.exit(0);
             } else {
-                response.put("result", "Guess not provided for team 2.");
+                JOptionPane.showMessageDialog(null, "Oh not a match You still have 1 attempts");
             }
-        } else {
-            response.put("result", "Invalid team number");
+
+            // attempt 3
+            //JOptionPane.showMessageDialog(null,"HI TEAm 1 you need to guess the movie, you have 1 last attempts to guess the movie");
+            String attempt3;
+            attempt3=JOptionPane.showInputDialog(null,"Enter the guess 3");
+            String attempt3ans=attempt3;
+            if(attempt3ans.equals(movie))
+            {
+                JOptionPane.showMessageDialog(null,"hurray you guessed it right");
+                System.exit(0);
+            }
+
+            else {
+                JOptionPane.showMessageDialog(null,"Oh not a match You still have 0 attempts left");
+                JOptionPane.showMessageDialog(null,"the movie was "+movie);
+            }
+
+
         }
-
-        return response;
     }
 }
